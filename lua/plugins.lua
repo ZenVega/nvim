@@ -11,4 +11,47 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({})
+require("lazy").setup({
+-- colorschemes
+	{
+		"catppuccin/nvim", name = "catppuccin", priority = 1000
+	},
+	"tanvirtin/monokai.nvim",
+	{
+	  'nvim-treesitter/nvim-treesitter',
+	  build = ':TSUpdate'
+	},
+
+-- LSP manager
+	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
+	"neovim/nvim-lspconfig",
+
+-- 42 Header
+	{
+	"Diogo-ss/42-header.nvim",
+	cmd = { "Stdheader" },
+	keys = { "<F1>" },
+	opts = {
+		default_map = true, -- Default mapping <F1> in normal mode.
+		auto_update = true, -- Update header when saving.
+		user = "uschmidt", -- Your user.
+		mail = "uschmidt@student.42berlin.de", -- Your mail.
+	},
+	config = function(_, opts)
+		require("42header").setup(opts)
+	end,
+	},
+-- Norminette
+    {
+      "hardyrafael17/norminette42.nvim",
+      config = function()
+      local norminette = require("norminette")
+      norminette.setup({
+          runOnSave = true,
+          maxErrorsToShow = 5,
+          active = true,
+      })
+    end,
+    }
+})
