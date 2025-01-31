@@ -18,21 +18,32 @@ require("lazy").setup({
 	},
 	"tanvirtin/monokai.nvim",
 	"rebelot/kanagawa.nvim", 
+	{
+		'akinsho/bufferline.nvim',
+		dependencies = {
+			'nvim-tree/nvim-web-devicons'
+		},
+    },
 
 -- Navigation
 	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
-	{'nvim-telescope/telescope.nvim', tag = '0.1.8',dependencies = { 'nvim-lua/plenary.nvim'}},
 	{
-	  "nvim-tree/nvim-tree.lua",
-	  version = "*",
-	  lazy = false,
-	  dependencies = {
-		"nvim-tree/nvim-web-devicons",
-	  },
-	  config = function()
-		require("nvim-tree").setup {}
-	  end,
+		'nvim-telescope/telescope.nvim',
+		tag = '0.1.8',
+		dependencies = { 'nvim-lua/plenary.nvim'}
 	},
+	{
+        "phaazon/hop.nvim",
+        lazy = true,
+    },
+	{
+        'nvim-lualine/lualine.nvim',
+        dependencies = {
+            'nvim-tree/nvim-web-devicons'
+        },
+    },
+	"nvim-tree/nvim-tree.lua",
+	{ "nvim-tree/nvim-web-devicons", opts = {} },
 
 -- LSP manager
 	"williamboman/mason.nvim",
