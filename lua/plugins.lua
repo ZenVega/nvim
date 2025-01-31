@@ -17,10 +17,10 @@ require("lazy").setup({
 		"catppuccin/nvim", name = "catppuccin", priority = 1000
 	},
 	"tanvirtin/monokai.nvim",
-	{
-	  'nvim-treesitter/nvim-treesitter',
-	  build = ':TSUpdate'
-	},
+
+-- Navigation
+	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+	{'nvim-telescope/telescope.nvim', tag = '0.1.8',dependencies = { 'nvim-lua/plenary.nvim'}},
 
 -- LSP manager
 	"williamboman/mason.nvim",
@@ -42,6 +42,7 @@ require("lazy").setup({
 		require("42header").setup(opts)
 	end,
 	},
+
 -- Norminette
     {
       "hardyrafael17/norminette42.nvim",
