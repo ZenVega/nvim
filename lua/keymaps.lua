@@ -33,3 +33,6 @@ vim.keymap.set('v', '>', '>gv', opts)
 
 --NVIM Tree
 vim.keymap.set('n', '<C-t>', ':NvimTreeToggle .<CR>', opts)
+
+--NVIM LSP
+vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action() <CR>', opts)
