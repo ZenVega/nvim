@@ -13,13 +13,16 @@ require("nvim-tree").setup({
 	view = {
 		 width = 30,
 	},
-	renderer = {
-		 group_empty = true,
-	},
+	open_on_tab = false,
+	update_cwd = true,
 	filters = {
-		 dotfiles = true,
+		dotfiles = false,
+		git_clean = false,
+		no_buffer = false, dotfiles = false,
 	},
 	renderer = {
+		highlight_git = true,
+		group_empty = false,
 		root_folder_modifier = ":t",
 		icons = {
 			glyphs = {
