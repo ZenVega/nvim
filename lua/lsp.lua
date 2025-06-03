@@ -10,7 +10,7 @@ require('mason').setup({
 
 require('mason-lspconfig').setup({
     -- A list of servers to automatically install if they're not already installed
-    ensure_installed = { 'lua_ls', 'rust_analyzer', 'clangd', 'bash-ls' },
+    ensure_installed = { 'lua_ls', 'rust_analyzer', 'clangd' },
 	require('mason').setup({
 		ui = {
 			icons = {
@@ -22,21 +22,20 @@ require('mason-lspconfig').setup({
 	})
 })
 
-require('mason-lspconfig').setup({
-    -- A list of servers to automatically install if they're not already installed
-    ensure_installed = { 'lua_ls', 'rust_analyzer', 'clangd', 'bash-ls' },
+local lspconfig = require('lspconfig')
+
+lspconfig.bashls.setup{}
+lspconfig.clangd.setup{
+	on_attach = on_attach,
+}
+
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = '●', -- could be '●', '■', '▎', etc.
+    spacing = 4,
+  },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
 })
-
-local lspconfig = require('lspconfig')
-
-lspconfig.bashls.setup{}
-lspconfig.clangd.setup{
-	on_attach = on_attach,
-}
-
-local lspconfig = require('lspconfig')
-
-lspconfig.bashls.setup{}
-lspconfig.clangd.setup{
-	on_attach = on_attach,
-}
