@@ -28,7 +28,6 @@ lspconfig.bashls.setup{}
 lspconfig.clangd.setup{
 	on_attach = on_attach,
 }
-
 vim.diagnostic.config({
   virtual_text = {
     prefix = '●', -- could be '●', '■', '▎', etc.

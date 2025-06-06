@@ -49,7 +49,21 @@ require("lazy").setup({
 	"williamboman/mason.nvim",
 	 "williamboman/mason-lspconfig.nvim",
 	"neovim/nvim-lspconfig",
-
+	"mfussenegger/nvim-lint",
+-- CPP formatter
+	{
+	  "nvimdev/guard.nvim",
+	  dependencies = {
+		"nvimdev/guard-collection",
+	  },
+	  ft = { "cpp", "c", "hpp", "json" }, -- load guard only for these types
+	  config = function()
+		local ft = require("guard.filetype")
+		ft("cpp"):fmt("clang-format")
+		ft("json"):fmt("clang-format")
+		ft("hpp"):fmt("clang-format")
+	  end,
+	},
 -- 42 Header
 	{
 	"Diogo-ss/42-header.nvim",
