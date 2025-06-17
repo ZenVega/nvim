@@ -30,7 +30,7 @@ lspconfig.clangd.setup{
 }
 vim.diagnostic.config({
   virtual_text = {
-    prefix = '●', -- could be '●', '■', '▎', etc.
+    prefix = '■', -- could be '●', '■', '▎', etc.
     spacing = 4,
   },
   signs = true,

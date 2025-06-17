@@ -56,7 +56,7 @@ require("lazy").setup({
 	  dependencies = {
 		"nvimdev/guard-collection",
 	  },
-	  ft = { "cpp", "c", "hpp", "json" }, -- load guard only for these types
+	  ft = { "cpp", "hpp", "json" },
 	  config = function()
 		local ft = require("guard.filetype")
 		ft("cpp"):fmt("clang-format")
