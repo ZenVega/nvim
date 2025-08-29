@@ -1,7 +1,7 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
-    "git",
+ 
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
@@ -44,24 +44,30 @@ require("lazy").setup({
     },
 	"nvim-tree/nvim-tree.lua",
 	{ "nvim-tree/nvim-web-devicons", opts = {} },
-
 -- LSP manager
 	"williamboman/mason.nvim",
 	 "williamboman/mason-lspconfig.nvim",
 	"neovim/nvim-lspconfig",
 	"mfussenegger/nvim-lint",
--- CPP formatter
+-- CPP + Web Formatter
 	{
 	  "nvimdev/guard.nvim",
 	  dependencies = {
 		"nvimdev/guard-collection",
 	  },
-	  ft = { "cpp", "hpp", "json" },
+	  ft = { "cpp", "hpp", "json", "js", "html", "css" },
 	  config = function()
 		local ft = require("guard.filetype")
+
+		-- C/C++ and JSON using clang-format
 		ft("cpp"):fmt("clang-format")
-		ft("json"):fmt("clang-format")
 		ft("hpp"):fmt("clang-format")
+		ft("json"):fmt("clang-format")
+
+		-- Web: JavaScript, HTML, CSS using prettier
+		ft("js"):fmt("prettier")
+		ft("html"):fmt("prettier")
+	ft("css"):fmt("prettier")
 	  end,
 	},
 -- 42 Header
@@ -79,17 +85,34 @@ require("lazy").setup({
 		require("42header").setup(opts)
 	end,
 	},
-
 -- Norminette
-    {
-      "hardyrafael17/norminette42.nvim",
-      config = function()
-      local norminette = require("norminette")
-      norminette.setup({
-          runOnSave = true,
-          maxErrorsToShow = 5,
-          active = false,
-      })
-    end,
-    }
+	{
+	  "hardyrafael17/norminette42.nvim",
+	  config = function()
+	  local norminette = require("norminette")
+	  norminette.setup({
+		  runOnSave = true,
+		  maxErrorsToShow = 5,
+		  active = false,
+	  })
+	end,
+	},
+	{
+	  "folke/which-key.nvim",
+	  event = "VeryLazy",
+	  opts = {
+		-- your configuration comes here
+		-- or leave it empty to use the default settings
+		-- refer to the configuration section below
+	  },
+	  keys = {
+		{
+		  "<leader>?",
+		  function()
+			require("which-key").show()
+		  end,
+		  desc = "Buffer Local Keymaps (which-key)",
+		},
+	  },
+	}
 })

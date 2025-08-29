@@ -36,3 +36,9 @@ vim.keymap.set('n', '<C-t>', ':NvimTreeToggle .<CR>', opts)
 
 --NVIM LSP
 vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action() <CR>', opts)
+
+-- Open terminal in a horizontal split with <C-\>
+vim.keymap.set('n', '<C-\\>', ':split | terminal<CR>', opts)
+
+-- Exit terminal mode with <C-Esc>
+vim.keymap.set('t', '<C-Esc>', [[<C-\><C-n>]], { noremap = true })
