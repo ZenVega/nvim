@@ -38,3 +38,21 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = true,
 })
+local lspconfig = require("lspconfig")
+local on_attach = function(client, bufnr)
+    -- Optional keymaps or autocommands here
+end
+
+-- Example servers
+lspconfig.lua_ls.setup({ on_attach = on_attach })
+lspconfig.clangd.setup({ on_attach = on_attach })
+lspconfig.rust_analyzer.setup({ on_attach = on_attach })
+
+-- Diagnostic display
+vim.diagnostic.config({
+  virtual_text = { prefix = "■", spacing = 4 },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})

@@ -1,7 +1,7 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
- 
+	"git", 
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
@@ -47,8 +47,21 @@ require("lazy").setup({
 -- LSP manager
 	"williamboman/mason.nvim",
 	 "williamboman/mason-lspconfig.nvim",
-	"neovim/nvim-lspconfig",
-	"mfussenegger/nvim-lint",
+	{
+		'esmuellert/nvim-eslint',
+		ft = { "javascript", "typescript", "vue", "svelte", "astro" },
+		config = function()
+			local eslint = require('eslint_config')  -- <- must match file name
+			eslint.setup()
+		end,
+	},
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" },
+		config = function()
+			require("lsp")  -- your LSP setup file
+		end,
+	},
 -- CPP + Web Formatter
 	{
 	  "nvimdev/guard.nvim",
