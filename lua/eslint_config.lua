@@ -58,7 +58,7 @@ function M.setup()
                 disableRuleComment = { enable = true, location = 'separateLine' },
                 showDocumentation = { enable = true },
             },
-            format = false,
+            format = true,
             quiet = false,
             onIgnoredFiles = 'off',
             options = {},

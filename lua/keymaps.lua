@@ -3,8 +3,8 @@ vim.g.mapleader = " "
 
 -- define common options
 local opts = {
-    noremap = true,      -- non-recursive
-    silent = true,       -- do not show message
+    noremap = true, -- non-recursive
+    silent = true,  -- do not show message
 }
 
 -----------------
@@ -42,3 +42,7 @@ vim.keymap.set('n', '<C-\\>', ':split | terminal<CR>', opts)
 
 -- Exit terminal mode with <C-Esc>
 vim.keymap.set('t', '<C-Esc>', [[<C-\><C-n>]], { noremap = true })
+
+vim.keymap.set("n", "<leader>f", function()
+    vim.lsp.buf.format({ async = true })
+end, { desc = "Format file" })
