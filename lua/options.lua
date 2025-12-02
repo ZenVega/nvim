@@ -23,16 +23,17 @@ vim.opt.smartcase = true  -- but make it case sensitive if an uppercase is enter
 
 -- Apply tab/indent settings globally, but also enforce for all filetypes
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "*",
-    callback = function()
-        vim.opt_local.tabstop = 4
-        vim.opt_local.shiftwidth = 4
-        vim.opt_local.expandtab = true
-        vim.opt_local.list = true
-        vim.opt_local.listchars = { tab = '⌁ ', trail = '·', nbsp = '␣' }
-    end,
-    desc = "Set global indentation and listchars for all filetypes",
-    group = vim.api.nvim_create_augroup("GlobalIndent", { clear = true }),
-    -- run after everything else
-    nested = true,
+  pattern = "*",
+  callback = function()
+    vim.opt_local.listchars = { tab = '⌁ ', trail = '·', nbsp = '␣' }
+    vim.opt_local.list = true
+  end,
 })
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    vim.opt.list = true
+    vim.opt.listchars = { tab = '⌁ ', trail = '·', nbsp = '␣' }
+  end,
+})
+
