@@ -8,18 +8,13 @@ return {
         -- LSP servers
         "lua-language-server",
         "clangd",
-        "solargraph",
-        "ruby-lsp",
         "typescript-language-server",
         "tailwindcss-language-server",
         "json-lsp",
         "marksman",
-        "vue-language-server", -- Volar for Vue 3 (NOT vetur-vls!)
-        -- Tools / formatters / linters
         "stylua",
         "eslint_d",
         "prettier",
-        "rubocop",
         "debugpy",
         "tree-sitter-cli",
         "prettier",
