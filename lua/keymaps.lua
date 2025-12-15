@@ -44,3 +44,5 @@ vim.keymap.set("n", "<C-\\>", ":split | terminal<CR>", opts)
 vim.keymap.set("t", "<C-Esc>", [[<C-\><C-n>]], { noremap = true })
 
 vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format { async = true } end, { desc = "Format file" })
+
+vim.keymap.set("n", "<leader>E", vim.diagnostic.open_float, { desc = "Show diagnostics" })

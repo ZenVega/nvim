@@ -8,7 +8,7 @@ vim.opt.listchars = { tab = "⌁ ", trail = "·", nbsp = "␣" }
 
 -- UI conf
 vim.opt.wrap = true
-vim.opt.linebrek = true
+vim.opt.linebreak = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true

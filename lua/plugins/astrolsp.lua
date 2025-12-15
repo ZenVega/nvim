@@ -12,10 +12,25 @@ return {
     formatting = {
       format_on_save = {
         enabled = true,
-        allow_filetypes = { "vue", "typescript", "javascript", "css", "scss", "html", "c", "h", "cpp", "hpp", "tpp" },
+        allow_filetypes = {
+          "vue",
+          "typescript",
+          "typescriptreact",
+          "javascript",
+          "javascriptreact",
+          "css",
+          "scss",
+          "html",
+          "c",
+          "h",
+          "cpp",
+          "hpp",
+          "tpp",
+        },
       },
       disabled = {},
       timeout_ms = 1000,
+      filter = function(client) return client.name == "null-ls" end,
     },
     -- LSP servers
     servers = {
@@ -65,6 +80,10 @@ return {
             },
           },
         },
+        on_attach = function(client, bufnr)
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
+        end,
       }
 
       -- Vue LSP (Volar) - properly configured
